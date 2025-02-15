@@ -1,12 +1,10 @@
-import React from 'react'
-import MovieCard from '../components/MovieCard'
+import React from "react";
+import HomeContainer from "../container/HomeContainer";
 
 const HomePage = () => {
   return (
-    <div>
-      <MovieCard/>
-    </div>
-  )
-}
+      <HomeContainer />
+  );
+};
 
-export default HomePage
+export default HomePage;
