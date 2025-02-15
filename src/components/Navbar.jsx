@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';  
+import { apiKey } from '../config';
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [movies, setMovies] = useState([]);  
+  const [loading, setLoading] = useState(false);  
+  const [error, setError] = useState(null);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    console.log('Searching for:', searchTerm);
+    if (!searchTerm) return; 
+
+    setLoading(true); 
+    setError(null); 
+
+    try {
+     
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}&language=en-US&page=1`
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch movies');
+      }
+
+      const data = await response.json();
+      setMovies(data.results); 
+    } catch (err) {
+      setError('Failed to fetch movies. Please try again later.');
+    } finally {
+      setLoading(false);  // Reset the loading state
+    }
   };
 
   return (
@@ -24,23 +49,23 @@ const Navbar = () => {
         {/* Navigation Links */}
         <div className="flex space-x-4 text-white">
           <Link
-            to="/HomePage"
+            to="/"
             className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
           >
             Popular
           </Link>
           <Link
-            to="/TopRatePage"
+            to="/top-rated"
             className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
           >
             Top Rated
           </Link>
 
           <Link
-            to="/UpcomingPade"
+            to="/upcoming"
             className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
           >
-            Top Rated
+            Upcoming
           </Link>
         </div>
 
@@ -61,6 +86,30 @@ const Navbar = () => {
           </button>
         </form>
       </div>
+
+      
+      {/* <div className="mt-4">
+        {loading && <p className="text-white">Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4 p-4 m">
+          {movies.length > 0 ? (
+            movies.map((movie, index) => (
+              <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.original_title}
+                  className="w-full h-auto rounded-md"
+                />
+                <p className="text-white text-xl text-center">{movie.original_title}</p>
+                <p className="text-yellow-400 text-xl text-center">Rating: {movie.vote_average}</p>
+              </div>
+            ))
+          ) : (
+            <p className="text-white">No results found</p>
+          )}
+        </div>
+      </div> */}
+      
     </nav>
   );
 };
