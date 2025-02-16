@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 w-full">
+    <nav className="bg-gray-800 p-4 w-full  backdrop-blur-lg">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
     
         <div className="text-white text-2xl font-semibold">
@@ -88,7 +88,7 @@ const Navbar = () => {
       </div>
 
       
-      {/* <div className="mt-4">
+     {/* <div className="mt-4">
         {loading && <p className="text-white">Loading...</p>}
         {error && <p className="text-red-500">{error}</p>}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-items-center gap-4 p-4 m">
@@ -105,11 +105,11 @@ const Navbar = () => {
               </div>
             ))
           ) : (
-            <p className="text-white">No results found</p>
+            <p className="text-white"></p>
           )}
         </div>
-      </div> */}
-      
+      </div> 
+       */}
     </nav>
   );
 };
