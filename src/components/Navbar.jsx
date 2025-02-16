@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';  
 import { apiKey } from '../config';
+import { FaHome, FaStar, FaFilm } from 'react-icons/fa';
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +40,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 w-full  backdrop-blur-lg">
+    <nav className="bg-gray-800 p-4 w-full  backdrop-blur-lg fixed  ">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
     
         <div className="text-white text-2xl font-semibold">
@@ -48,25 +49,28 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <div className="flex space-x-4 text-white">
-          <Link
-            to="/"
-            className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
-          >
-            Popular
-          </Link>
-          <Link
-            to="/top-rated"
-            className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
-          >
-            Top Rated
-          </Link>
+        <Link
+  to="/"
+  className="flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
+>
+  <FaHome />
+  <span>Popular</span>
+</Link>
+<Link
+  to="/top-rated"
+  className="flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
+>
+  <FaStar />
+  <span>Top Rated</span>
+</Link>
+<Link
+  to="/upcoming"
+  className="flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
+>
+  <FaFilm />
+  <span>Upcoming</span>
+</Link>
 
-          <Link
-            to="/upcoming"
-            className="hover:bg-gray-700 px-4 py-2 rounded-md transition duration-300"
-          >
-            Upcoming
-          </Link>
         </div>
 
         {/* Search Bar */}
