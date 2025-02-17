@@ -11,9 +11,7 @@ const Navbar = () => {
   // State for mobile menu toggle
 const [search, setSearch] = useState("")
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +34,7 @@ const [search, setSearch] = useState("")
     } catch (err) {
       setError('Failed to fetch movies. Please try again later.');
     } finally {
-      setLoading(false);  // Reset the loading state
+      setLoading(false);  
     }
   };
 
@@ -48,7 +46,7 @@ const [search, setSearch] = useState("")
   };
 
   return (
-    <nav className="bg-gray-800 p-4 w-full backdrop-blur-lg fixed z-10">
+    <nav className="bg-gray-800 p-4 w-full backdrop-blur-lg fixed z-10 font-sans">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
     
         <div className="text-white text-2xl font-semibold hidden md:block">

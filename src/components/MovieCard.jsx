@@ -5,17 +5,21 @@ import { Link } from "react-router-dom";
 const MovieCard = ({ movie }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  
   const handleImageLoad = () => {
     setIsLoaded(true);
   };
 
-  useEffect(()=>{
-    setTimeout(()=>{setIsLoaded(true)},5000)
-  },[])
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 5000);
+  }, []);
 
   return (
-    <Link to={`/${movie.id}`} className="bg-gray-700 rounded-xl mt-18">
+    <Link
+      to={`/${movie.id}`}
+      className="bg-gray-700 rounded-xl mt-18 font-serif transform hover:scale-105 hover:shadow-lg transition-all duration-300"
+    >
       <div className="rounded-2xl overflow-hidden m-5">
         {!isLoaded && (
           <div className="skeleton-loader h-48 bg-gray-500 rounded-xl"></div>
