@@ -1,8 +1,8 @@
 import React, { use, useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
 import { apiKey, apiUrl } from "../config";
 import Pagination from "../components/Pagination";
+import { Link } from 'react-router-dom';  
 
 const HomeContainer = () => {
   const [data, setData] = useState([]);
@@ -29,6 +29,7 @@ const HomeContainer = () => {
         ))}
       </div>
       <Pagination setPage={setPage} page={page}/> 
+      
     </div>
   );
 };
