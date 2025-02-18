@@ -1,1 +1,8 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+
+a.active{
+    background-color: blue;
+    text-decoration: underline;
+    color: white;
+}
