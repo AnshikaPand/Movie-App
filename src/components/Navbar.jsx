@@ -50,8 +50,8 @@ const Navbar = () => {
         </div>
 
         
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white sm:mr-4">
+        <div className="md:hidden ">
+          <button onClick={toggleMenu} className="text-white sm:mr-5 " style={{    marginRight: "20px"}}>
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
@@ -82,7 +82,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar */}
-        <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 w-full md:w-auto mt-4 md:mt-0">
+        <form onSubmit={handleSearchSubmit} className="flex items-center space-x-2 w-full md:w-auto mt-4 md:mt-0" style={{marginTop: 0}}>
           <input
             type="text"
             value={search}
