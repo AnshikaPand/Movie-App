@@ -10,7 +10,7 @@ const Upcoming = () => {
      const fetchData = async()=> {
      const response = await fetch(`${apiUrl}/upcoming?api_key=${apiKey}&language=en-US&page=${page}`)
      const data = await response.json()
-     console.log(data.results)
+     
      setData(data.results)
      }
     

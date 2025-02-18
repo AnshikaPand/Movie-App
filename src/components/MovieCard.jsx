@@ -10,9 +10,10 @@ const MovieCard = ({ movie }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoaded(true);
     }, 5000);
+    return () => clearTimeout(timer); 
   }, []);
 
   return (
@@ -21,6 +22,7 @@ const MovieCard = ({ movie }) => {
       className="bg-gray-700 rounded-xl mt-18 font-serif transform hover:scale-105 hover:shadow-lg transition-all duration-300"
     >
       <div className="rounded-2xl overflow-hidden m-5">
+        {/* Skeleton loader while image is not loaded */}
         {!isLoaded && (
           <div className="skeleton-loader h-48 bg-gray-500 rounded-xl"></div>
         )}
@@ -34,6 +36,7 @@ const MovieCard = ({ movie }) => {
       </div>
       <div className="mb-2">
         <p className="text-white text-xl text-center">
+          {/* Skeleton for title */}
           {!movie.original_title ? (
             <div className="skeleton-loader w-3/4 h-6 bg-gray-500 mx-auto"></div>
           ) : (
@@ -41,6 +44,7 @@ const MovieCard = ({ movie }) => {
           )}
         </p>
         <p className="text-yellow-400 text-xl text-center flex items-center justify-center">
+          {/* Skeleton for rating */}
           {!movie.vote_average ? (
             <div className="skeleton-loader w-1/2 h-6 bg-gray-500 mx-auto"></div>
           ) : (

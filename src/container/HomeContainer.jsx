@@ -1,25 +1,28 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import { apiKey, apiUrl } from "../config";
 import Pagination from "../components/Pagination";
-import { Link } from 'react-router-dom';  
 
 const HomeContainer = () => {
   const [data, setData] = useState([]);
-  const[page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);  
 
   const fetchData = async () => {
+    setIsLoading(true); 
     const response = await fetch(
       `${apiUrl}/popular?api_key=${apiKey}&language=en-US&page=${page}`
     );
     const data = await response.json();
-    console.log(data.results);
     setData(data.results);
+    setIsLoading(false); 
   };
 
   useEffect(() => {
     fetchData();
   }, [page]);
+
+  if (isLoading) return <h1 className="text-4xl text-red-600 text-center mt-20 bg-gray-950">Loading...</h1>;
 
   return (
     <div className="flex items-center justify-center flex-col bg-gray-900 ">
@@ -29,8 +32,6 @@ const HomeContainer = () => {
         ))}
       </div>
       <Pagination setPage={setPage} page={page}/> 
-  
-      
     </div>
   );
 };

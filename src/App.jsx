@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import HomePage from "./pages/HomePage";
@@ -8,6 +8,9 @@ import MovieDetails from "./components/MovieDetails";
 import SearchBarPage from "./pages/SearchBarPage";
 
 function App() {
+
+
+
   return (
     <Layout>
       <Routes>

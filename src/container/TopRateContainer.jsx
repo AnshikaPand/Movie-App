@@ -10,7 +10,7 @@ const TopRateContainer = () => {
      const fetchData = async()=> {
      const response = await fetch(`${apiUrl}/top_rated?api_key=${apiKey}&language=en-US&page=${page}`)
      const data = await response.json()
-     console.log(data.results)
+    
      setData(data.results)
      }
     
