@@ -29,6 +29,7 @@ const HomeContainer = () => {
         ))}
       </div>
       <Pagination setPage={setPage} page={page}/> 
+  
       
     </div>
   );

@@ -8,7 +8,7 @@ const TopRateContainer = () => {
   const[page, setPage] = useState(1)
     const[data, setData] = useState([])
      const fetchData = async()=> {
-     const response = await fetch(`${apiUrl}/top_rated?api_key=${apiKey}&language=en-US&page=1`)
+     const response = await fetch(`${apiUrl}/top_rated?api_key=${apiKey}&language=en-US&page=${page}`)
      const data = await response.json()
      console.log(data.results)
      setData(data.results)

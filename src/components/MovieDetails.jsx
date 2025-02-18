@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiKey, apiUrl } from "../config";
 import { useParams } from "react-router-dom";
-import { FaStar } from "react-icons/fa"; 
-import { FaPlayCircle } from "react-icons/fa"; 
+import { FaStar, FaPlayCircle } from "react-icons/fa";
 
 const MovieDetail = () => {
   const [movie, setMovie] = useState({});
@@ -18,10 +17,11 @@ const MovieDetail = () => {
   };
 
   const fetchMovieCast = async (id) => {
-    const castResponse = await fetch(`${apiUrl}/${id}/credits?api_key=${apiKey}&language=en-US`
+    const castResponse = await fetch(
+      `${apiUrl}/${id}/credits?api_key=${apiKey}&language=en-US`
     );
     const castData = await castResponse.json();
-    console.log(castData.cast)
+    console.log(castData.cast);
     setCast(castData.cast);
   };
 
@@ -64,7 +64,6 @@ const MovieDetail = () => {
         </div>
       </div>
 
-      
       <div className="mt-8">
         <h2 className="text-3xl font-semibold text-white px-6">Cast</h2>
         <div className="mt-6 overflow-x-auto">
@@ -85,7 +84,9 @@ const MovieDetail = () => {
                     alt={member.name}
                     loading="lazy"
                   />
-                  <p className="text-sm font-medium text-white mt-3">{member.name}</p>
+                  <p className="text-sm font-medium text-white mt-3">
+                    {member.name}
+                  </p>
                   <p className="text-xs text-white">{member.character}</p>
                 </div>
               </div>

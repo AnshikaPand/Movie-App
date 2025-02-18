@@ -29,7 +29,9 @@ const SearchBar = () => {
     fetchMovies(queryParam);
   }, [queryParam]);
 
-  if (isLoading) return <div className="loader mx-auto">Loading...</div>;
+  if (isLoading) {
+    return <div className="loader mx-auto">Loading...</div>;
+  }
 
   return (
     <div className=" min-h-screen bg-gray-900 ">

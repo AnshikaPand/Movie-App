@@ -49,15 +49,15 @@ const Navbar = () => {
           MovieDb
         </div>
 
-        {/* Mobile Menu Button */}
+        
         <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white">
+          <button onClick={toggleMenu} className="text-white sm:mr-4">
             {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
 
         
-        <div className={`absolute top-16 left-0 ml-8 w-full bg-gray-800 md:static md:flex md:space-x-4 text-white ${isMenuOpen ? 'block' : 'hidden'}`}>
+        <div className={`absolute top-18 left-0 ml-8 w-full bg-gray-800 md:static md:flex md:space-x-4 text-white ${isMenuOpen ? 'block' : 'hidden'}`}>
           <NavLink
             to="/"
             className="flex items-center space-x-2 hover:bg-gray-700 px-4 py-2 transition duration-300"
@@ -88,7 +88,7 @@ const Navbar = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Movie Name ..."
-            className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-30 md:w-40" 
+            className="px-4 py-2 rounded-lg bg-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full  sm:ml-5 sm:w-30 md:w-60" 
           />
           <button
             type="submit"
